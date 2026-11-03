@@ -30,9 +30,9 @@ services:
     user: root
     entrypoint: []
     working_dir: /myapp
-    command: bundle exec puma -b tcp://0.0.0.0:3000
+    command: bundle exec puma -b tcp://0.0.0.0:3001
     ports:
-      - "3000:3000"
+      - "3001:3001"
     volumes:
       - .:/myapp
     environment:
@@ -58,7 +58,7 @@ services:
     volumes:
       - .:/myapp
     ports:
-      - "5173:5173"
+      - "3000:3000"
     command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
     depends_on:
       - web
