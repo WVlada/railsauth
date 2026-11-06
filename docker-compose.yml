@@ -44,6 +44,7 @@ services:
     depends_on:
       - postgres
       - redis
+    restart: unless-stopped
   
   redis:
     image: redis:7-alpine
@@ -51,6 +52,7 @@ services:
       - redis_data:/data
     ports:
       - "6379:6379"
+    restart: unless-stopped
   
   frontend:
     image: node:22-alpine
@@ -62,6 +64,7 @@ services:
     command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
     depends_on:
       - web
+    restart: unless-stopped
 
 volumes:
   pgadmin_data:

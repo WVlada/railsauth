@@ -9,6 +9,9 @@ export default defineConfig({
     strictPort: true, // Sprečava Vite da automatski pređe na 3001 ako je 3000 zauzet
     watch: {
       usePolling: true // Neophodno za hot-reload unutar Docker-a na Windowsu/Macu
+    },
+    proxy: {
+      '/api': 'http://web:3001' // Koristi se ime Docker servisa 'web' umesto localhost
     }
   },
 })
