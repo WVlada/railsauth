@@ -6,19 +6,18 @@ import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
-
-  let fetchAPI = async () => {
-    let res = await fetch("http://localhost:3001", {
-      method: "GET",
-    });
-    return res;
-  };
+  const [res, setRes] = useState(null);
 
   useEffect(() => {
-    let response = fetchAPI();
-    console.log("response:", response);
+    const fetchResponse = async () => {
+      let resPonse = await fetch("http://localhost:3001", {
+        method: "GET",
+      });
+      setRes(await resPonse.json());
+    };
+    fetchResponse();
   }, []);
-
+  console.log("Response:", res);
   return (
     <>
       <section id="center">
