@@ -8,6 +8,13 @@ function App() {
   const [count, setCount] = useState(0);
   const [res, setRes] = useState(null);
 
+  const fetchAPI1 = async () => {
+    let resPonse = await fetch("http://localhost:3001/api/v1/posts", {
+      method: "GET",
+    });
+    console.log(resPonse);
+  };
+
   useEffect(() => {
     const fetchResponse = async () => {
       let resPonse = await fetch("http://localhost:3001", {
@@ -16,6 +23,7 @@ function App() {
       setRes(await resPonse.json());
     };
     fetchResponse();
+    fetchAPI1();
   }, []);
   console.log("Response:", res);
   return (

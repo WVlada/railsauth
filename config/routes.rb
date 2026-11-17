@@ -12,11 +12,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root to: proc { [200, { "Content-Type" => "application/json" }, ['{"status":"ok"}']] }
+  root to: proc { |env|
+  #puts env
+  #puts "GET / hit at #{Time.now}"
+  $stdout.flush
+    [200, { "Content-Type" => "application/json" }, ['{"status":"ok"}']] 
+  }
 
   namespace :api do
     namespace :v1 do
       # API resources go here, e.g., resources :posts
+      resources :posts
     end
   end
 end
