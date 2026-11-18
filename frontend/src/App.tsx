@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 function App() {
-
   const [res, setRes] = useState(null);
 
   const fetchAPI1 = async () => {
@@ -24,7 +24,7 @@ function App() {
   console.log("Response:", res);
   return (
     <div>
-
+      <Button>Rails API + React</Button>
     </div>
   );
 }
